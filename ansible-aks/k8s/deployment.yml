@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+Namespace: prac2-nginx
+metadata:    
+  name: nginx-deployment 
+  labels:
+     app: nginx 
+spec:
+  replicas: 3  
+  selector:
+    matchLabels:
+      app: nginx 
+  template:
+    metadata:
+      labels:
+        app: nginx 
+    spec:
+      containers:
+      - name: nginx
+        image: unirregistry.azurecr.io/localhost/nginx-prac2:1.0.0
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: nginx-data
+        persistentVolumeClaim:
+          claimName: nginx-pvc-claim

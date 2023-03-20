@@ -1,0 +1,16 @@
+- name: Playbook for podman.
+    hosts: 52.142.252.29
+
+    tasks:
+
+     - name: Pull image from ACR.
+       podman_image:
+         name: unirregistry.azurecr.io/localhost/nginx-prac2
+         tag: 1.0.0
+
+     - name: Running image.
+        containers.podman.podman_container:
+          name: nginx-prac2
+          image:  unirregistry.azurecr.io/localhost/nginx-prac2
+          state: starte
+
