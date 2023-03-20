@@ -1,6 +1,11 @@
 - name: Playbook for podman.
     hosts: 52.142.252.29
+  remote_user: alex
 
+  vars:
+    vm_name: az-unir-vm
+    admin_username: alex
+    ssh_public_keys: ~/.ssh/id_rsa
     tasks:
 
      - name: Pull image from ACR.
